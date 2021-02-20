@@ -7,7 +7,7 @@ from datetime import datetime
 def createParser():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-p", "--path", type=Path, default="C:/Dev/pet2/tables/wine3.xlsx"
+        "-p", "--path", type=Path, default="C:/Dev/landing_page/tables/wine3.xlsx"
         )
 
     return parser
