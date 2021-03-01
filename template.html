@@ -109,31 +109,30 @@
         <div class="row">
           <div class="col-12 section-title text-center mb-5">
             <h2 class="d-block">Коллекция вин</h2>
-            <p>Вино — один из самых благородных и многогранных напитков в мире! Виноделие берёт своё начало с незапамятных времён. Вино упоминается в Библии и Коране, греческой и римской мифологии, где были свои боги вина (к примеру, Дионис). Стоит отметить, что почти у каждого народа существует своя легенда, повествующая о появлении божественного эликсира — вина.
+              <p>Вино — один из самых благородных и многогранных напитков в мире! Виноделие берёт своё начало с незапамятных времён. Вино упоминается в Библии и Коране, греческой и римской мифологии, где были свои боги вина (к примеру, Дионис). Стоит отметить, что почти у каждого народа существует своя легенда, повествующая о появлении божественного эликсира — вина.
             </p>
           </div>
         </div>
         <div class="col-12 section-title text-center mb-5">
-          {% for key, value in wines.items()|sort %}
-            {% if key != 'Категория' %}
-            <h2 class="d-block">{{key}}</h1>
+          {% for category, wine in wines %}
+            <h2 class="d-block">{{category}}</h1>
             {% endif %}    
           <div class="row">
-            {% for v in value %}
+            {% for item in wine %}
               <div class="col-lg-4 mb-5 col-md-6">
                 <div class="wine_v_1 text-center pb-4 pt-5">
-                  {% if 'Акция' in v.keys() and v.get('Акция') != '' %}
-                    <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
+                  {% if item.Акция %}
+                  <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
                   {% endif %}
-                  <img src="images\{{v.get('Картинка')}}" alt="Image" class="img-fluid">
+                  <img src="images\{{item.Картинка}}" alt="Image" class="img-fluid">
                     <div>
-                      <h3 class="heading mt-3 mb-3 text-dark">{{v.get('Название')}}</h3>
+                      <h3 class="heading mt-3 mb-3 text-dark">{{item.Название}}</h3>
                           <p>
-                            {% if 'Сорт' in v.keys() and v.get('Сорт') != '' %} 
-                              Сорт винограда - {{v.get('Сорт')}}<br/>
+                            {% if item.Сорт %} 
+                              Сорт винограда - {{item.Сорт}}<br/>
                             {% endif %}
-                            {% if 'Цена' in v.keys() and v.get('Цена') != '' %}
-                            <span class="price">{{v.get('Цена')}} р.</span>
+                            {% if item.Цена %}
+                            <span class="price">{{item.Цена}} р.</span>
                             {% endif %}
                           </p> 
                     </div>

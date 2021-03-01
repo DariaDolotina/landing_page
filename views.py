@@ -1,13 +1,14 @@
-from collections import defaultdict
 import argparse
-from pathlib import Path
+from collections import defaultdict
 from datetime import datetime
+from pathlib import Path
 
 
 def createParser():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-p", "--path", type=Path, default="C:/Dev/landing_page/tables/wine3.xlsx"
+        "-p", "--path", type=Path,
+        default="tables/wine3.xlsx"
         )
 
     return parser
@@ -16,10 +17,8 @@ def createParser():
 def get_wines(products):
     wines = defaultdict(list)
     for product in products:
-        if "Категория" in product.keys():
-            wines[product["Категория"]].append(product)
-        else:
-            wines["Категория"].append(product)
+        wines[product["Категория"]].append(product)
+    wines = sorted(wines.items())
     return wines
 
 
